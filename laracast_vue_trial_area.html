@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Trial Area - Laracasts Vue</title>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+</head>
+<style type="text/css">
+	.color-red{
+		color: red;
+	}
+</style>
+
+<body>
+
+<div class="container" style="padding-top: 90px">
+	<div id="form">
+			<button class="btn btn-sm btn-primary" :title="title" :class="greenbtn" :disabled="isLoading" @click="toggle">{{blue}}{{green}}</button>
+	</div>		
+	
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script src="js/vue.js"></script>
+
+<script>
+	let app = new Vue({
+		el:'#form',
+		data:{
+			title:'Thank you for doing that!',
+			classRed: 'color-red',
+			isLoading: false,
+			blue: 'Click me to turn to green and disabled',
+			green: '', 
+			greenbtn:''
+		},
+		 methods:{
+				toggle(){
+					this.isLoading = true;
+					this.blue = '';
+					this.green = 'Yaay! I\'m now green! And disabled!';
+					this.greenbtn = 'btn-success';
+				}
+		 }
+	});
+</script>
+
+</body>
+
+</html>
+
+
+
+<!-- <body>
+
+<div class="container" style="padding-top: 90px">
+	<div id="form">
+		<input type="" name="" v-model="text">
+		<p>Vue reactivity in action! {{text}}</p>
+
+		<ul>
+			<li v-for="car in cars" v-text="car"></li>
+			<input type="text" v-model="list">
+			<button class="btn btn-sm btn-success" @click="addCars">Add Cars</button>
+			<button class="btn btn-sm btn-danger" @click="removeCars">Remove Cars</button>
+		</ul>
+	</div>
+	
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script src="js/vue.js"></script>
+
+<script>
+	let app = new Vue({
+		el:'#form',
+		data:{
+			text: 'Hey Man',
+			cars:['Honda', 'Kia', 'Toyota', 'Benz'],
+			list:''
+		},
+		methods:{
+			addCars(){
+				this.cars.push(this.list);
+				this.list='';
+		  },
+		  removeCars(){
+		  	this.cars.pop(this.list);
+		  }
+		}
+	})
+</script>
+
+</body> -->

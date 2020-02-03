@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="">
+	<title>Lesson 10 - 17</title>
+</head>
+
+<body>
+	<!-- Lesson 10 - 17 Event Listeners and all -->
+	<div id="app">
+		    <!-- You can also use JavaS9cript directly in your HTML attributes. Just ensure you use the interpolation syntax e.g count(2, $event) below can be written as times++ in JavaScript -->
+		<button @click="count(2, $event)">Click Me</button>
+		<p>You clicked me {{times}}
+			<span v-if="times <= 1">time</span>
+			<span v-else="">times</span>
+			<!-- {{times < 20 ? 'Less than': 'Now Greater than!'}} -->
+		</p>
+		<!-- Event Modifiers -->
+		<p @mousemove="updateCoord">{{x}} / {{y}} <span @mousemove.stop="">DEAD END</span></p>
+		    <!-- Where enter and space are keyboard keys-->
+		<input @keyup.enter.space="enterName">
+
+	</div>
+
+	<script src="js/vue.js"></script>
+	<script>
+		new Vue ({
+			el: '#app',
+			data:{
+				times : 0,
+				x: 0,
+				y: 0
+			},
+			methods:{
+				count(step, event){
+					this.times += step;
+				},
+				updateCoord(event){
+					this.x = event.clientX;
+					this.y = event.clientY;
+				},
+				enterName(){
+					alert('Form Submitted');
+				}
+			}	
+			});
+
+	</script>
+</body>
+</html>

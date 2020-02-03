@@ -1,0 +1,29 @@
+
+<select onchange="ChangeContext(this.value)">
+    <option value="Fruit">Fruit</option>
+    <option value="Meat">Meat</option>
+</select>
+
+<select id="select2"></select>
+
+<script type="text/javascript">
+	var TypesArr = {Fruit: ['Apple', 'Orange', 'Mango'], Meat: ['Steak', 'Pork']}
+
+
+	function ChangeContext(value)
+	{
+	    if (TypesArr.hasOwnProperty(value))
+	    {
+	        var out = ''
+
+	        for (var i = 0; i < TypesArr[value].length; i++)
+	        {
+	             out += '<option value="' + TypesArr[value][i] + '">' + TypesArr[value][i] + '</option>'
+	        }
+
+	        document.getElementById('select2').innerHTML = out
+	    }
+	}
+
+	ChangeContext('Fruit')
+</script>

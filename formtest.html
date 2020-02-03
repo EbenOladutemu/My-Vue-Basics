@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<body>
+<script>
+	let fam = 'Tunde';
+	    A = 'Cousin';
+	    B = 'Brother';
+	    C = 'Sister';
+	    D = 'Aunt';
+	    E = 'Friend';
+
+	switch(fam){
+		case 'Sayo':
+			console.log(A);
+			break;
+		case 'David':
+			console.log(B);
+			break;
+		case 'Bidemi':
+			console.log(A);
+			break;
+		case 'Dupe':
+			console.log(D);
+			break;
+		case 'Tunde':
+			console.log(E);
+			break;
+		case 'Wumi':
+			console.log(C);
+			break;
+		default:
+			console.log('Maybe your long lost friend');
+	}
+
+  //PRIME NUMBER
+  var primeNo = document.getElementById('prime');
+
+  function isPrime(number){
+    for (var i = 2; i < number; i++) {
+      if (number % i === 0) {
+        result = number + ' is divisible by ' + i;
+        return result;
+        //console.log(result);
+        //return false;
+      }
+    }
+    return 'Prime Number'
+  }
+  isPrime(100);
+  primeNo.innerHTML =  result;
+</script>
+
+</body>
+</html>

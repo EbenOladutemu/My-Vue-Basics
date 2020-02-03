@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Lesson 22 - 28</title>
+</head>
+<style>
+	.demo{
+		border: 1px solid grey;
+		height: 200px;
+		width: 15%;
+		display: inline-block;
+		background-color: grey;
+	}
+	.red{
+		background-color: red;
+	}
+	.blue{
+		background-color: blue;
+	}
+	.yellow{
+		background-color: yellow;
+	}
+	.brd-rad{
+		border-radius: 5px;
+	}
+</style>
+
+<body>
+	<!-- Dynamic Styling With CSS Classes  -->
+	<div id="app">
+		<!-- Use '' in {} if classes contain - e.g pad-top -->
+		<div class="demo" :class="colors"></div>
+		<div class="demo" :style="{backgroundColor: yellowColor}"></div>
+		<div class="demo" :class="colors" :style="eben"></div>
+
+		<!-- the classes I created are only available to colors in the data object 
+				 but in the computed object, colors can access all css colours since I
+				 used the :style binding
+		-->
+
+		<input v-model="colors">
+
+		<input v-model="classHeight">
+	</div>
+
+<script src="js/vue.js"></script>
+<script>
+	new Vue ({
+		el: '#app',
+		data: {
+			colors: 'red',
+			yellowColor: 'yellow',
+			classHeight: 50
+		},
+		computed: {
+			eben(){
+				return{
+					backgroundColor: this.colors,
+					height: this.classHeight + 'px'
+				}
+			}
+		}
+	});
+</script>
+
+</body>
+</html>

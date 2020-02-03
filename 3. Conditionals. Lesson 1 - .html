@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>3. Conditionals. Lesson 1 -</title>
+</head>
+
+<body>
+	<!-- Conditionals & Rendering Lists  -->
+	<div id="app">
+		<p v-if="show">Show Me</p>
+		<p v-else-if="second">You get this!</p>
+		<p v-else>Default bro!</p>
+
+		<!-- template tag can be used to group elements you want to conditionally render together -->
+		<template v-if="second">
+			<p>Elereke puff puff</p>
+			<p>Doughnut cheeks!</p>
+		</template>
+
+		<!-- v-show is used to hide or display an element-->
+		<h3 v-show="show">THIS</h3>
+		<button @click="show = !show">Click</button>
+
+		<ul>
+			<!-- i used to get the index in our array. naming phone and i is entirely up to us, but order is important-->
+			<li v-for="phone,i in phones">{{phone}} is {{i}}</li>
+		</ul>
+		<button @click="phones.push('Huawei')" :key="phones">Add Phone</button>
+
+		<!-- An alternative to v-for -->
+		<template v-for="phone,i in phones">
+			<ul>
+				<li>{{phone}} {{i}}</li>
+			</ul>
+		</template>
+
+		<!-- Looping through objects or array of objects -->
+		<ul>
+			<li v-for="dude in dudes">{{dude.fav}}</li>
+
+			<!-- To get all the values in an object -->
+			<hr>
+			<li v-for="dude in dudes">
+				<div v-for="value in dude"> {{value}} </div>
+			</li>
+		  <!-- To get the properties and indices of the objects -->
+		  <hr>
+			<li v-for="dude in dudes">
+				<div v-for="value, prop, i in dude"> {{prop}}: {{value}} {{i}} </div>
+			</li>
+
+			<!-- Looping through a range of numbers e.g 1-20 -->
+			<span v-for="n in 20"> {{n}}</span>
+		</ul>
+	</div>
+
+	<div id="app2">
+		<p>
+			From the boy with an absent Father in Kampala, to the boy who has just been sexually molested in Abuja, the life trajectory of the African boy is filled with valleys, mountains and divergent experiences they may not be able to share until they become Fathers. Hence, this destructive weight is passed on from generation to generations and from Fathers to their Sons. <span v-if="reveal"></span> <span v-else>...</span>
+			<span v-show="reveal">
+				Africa as a continent is encumbered by divergent warring darkness and the need to salvage the boy race must be an important focus, if we must deliver the future we desire for Africa & humanity. It would fatal to assume the movement toward the redemption of the boy-child race is another cross fire in the feminism & anti-feminism war. The Future is of both gender – Male & Female.
+			</span>
+		</p>
+
+		<button @click="reveal = !reveal">Read More</button>
+	</div>
+
+<script src="js/vue.js"></script>
+<script>
+	new Vue({
+		el: '#app',
+		data: {
+			show: true,
+			second: false,
+			phones: ['Samsung', 'Tecno', 'Infinix', 'iPhone'],
+			dudes: [
+							{name: 'Eben', age: 30, fav: 'Rice', tall: true, color: 'Brown' },
+							{name: 'Cheeksy', age: 25, fav: 'Eba', tall: false} 
+						]
+		}
+	});
+
+
+	new Vue({
+		el: '#app2',
+		data:{
+			reveal: false
+		}
+	})
+</script>
+
+</body>
+</html>

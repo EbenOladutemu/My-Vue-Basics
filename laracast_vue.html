@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Laracasts Vue</title>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+</head>
+<style type="text/css">
+	.color-red{
+		color: red;	
+	}
+</style>
+
+<body>
+
+<div class="container" style="padding-top: 90px">
+	<div id="form">
+		<!-- Lesson 1 Basic Data binding -->
+		<input type="text" name="" class="form-control" v-model="text">
+		<p :class="classRed">This is a {{text}}</p><br>
+
+		<!-- Lesson 2 Lists 
+			You can use the v-for and {{name of array}} or the v-for and v-text="name for item in array"
+		-->
+		<ul>
+			<li v-text="framework" v-for="framework in frameworks"></li>
+
+			<!-- Lesson 3 Event Listeners 
+				@ is the shortform for v-on:
+				First, declare a new data object and bind it to the input tag using v-model.
+				This object is where our new value goes
+				Second, declare a method and add it to an event listener e.g click,keyup etc
+			-->
+			<form action="#">
+				<input type="text" v-model="list">
+				<button class="btn btn-sm btn-success" @click="addToList">Add to the list</button>
+				<button class="btn btn-sm btn-danger" @click="removeFromList">Delete From List</button>
+			</form><br>
+
+			<!-- Lesson 4 Attribute and Class binding
+				: is the shortform for v-bind:
+			-->
+			<button class="btn btn-sm btn-primary" :title="title" :class="{'btn-success': isLoading}" @click="toggle" @mouseover="show">{{blue}}{{green}}</button>
+			<button class="btn btn-sm btn-info" :class="yellowBtn" :disabled="isSending" @click="send">{{beforeSending}}{{sending}}</button>
+		</ul>
+	</div>
+	<div id="second">
+		<name></name>
+		<name>Cheeksy</name>
+		<name>Femi</name>
+		<name>Victor</name>
+	</div>	
+	
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script src="js/vue.js"></script>
+
+<script src="js/main.js"></script>
+
+</body>
+
+</html>

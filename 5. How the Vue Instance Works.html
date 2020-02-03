@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="">
+	<title>Lesson 1 - 14</title>
+</head>
+
+<body>
+	<!-- Lesson 1 -14. Understanding how the Vue instance works -->
+	<div id="app">
+		<h2>{{ title }}</h2>
+		<button @click="title = 'Changed'">Change Title</button>
+		<button @click="stop">Stop Instance</button>
+	</div>
+
+	<!-- Using components -->
+  <div id="app2">
+    <eben></eben>
+    <eben></eben>
+    <eben></eben>
+		<!-- <eben>Yoooo</eben>
+		<eben>Hiiiiii</eben> -->
+	</div>
+
+	<script src="js/vue.js"></script>
+	<script>
+		new Vue ({
+			el: '#app',
+			data: {
+				title: 'How the Vue Instance Works!'
+			},
+			beforeCreate(){
+				console.log('beforeCreate()')
+			},
+			created(){
+				console.log('created()')
+			},
+			beforeMount(){
+				console.log('beforeMount()')
+			},
+			mounted(){
+				console.log('mounted()')
+			},
+			beforeUpdate(){
+				console.log('beforeUpdate')
+			},
+			updated(){
+				console.log('updated()')
+			},
+			beforeDestroy(){
+				console.log('beforeDestroy()')
+			},
+			destroyed(){
+				console.log('destroyed()')
+			},
+			methods:{
+				stop(){
+					this.$destroy();
+				}
+			}
+		});
+
+		Vue.component('eben', {
+			data(){
+				return{
+					position: 'left'
+				}
+			},
+      template: '<p><slot>My position is currently {{ position }}</slot> <button @click="changePosition">Change</button></p>',
+      methods:{
+        changePosition(){
+          this.position = 'right';
+        }
+      }
+		});
+		new Vue({
+			el: '#app2'
+		});
+
+
+	</script>
+</body>
+</html>

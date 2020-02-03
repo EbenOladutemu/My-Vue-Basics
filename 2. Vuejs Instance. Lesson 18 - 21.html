@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Lesson 18 - 21</title>
+</head>
+
+<body>
+	<!-- Computed Properties  -->
+	<div id="app">
+		<button @click="counter++">Increase</button>
+		<button @click="counter--">Decrease</button>
+		<button @click="secondCounter++">Second Counter</button>
+
+		<p>Counter: {{counter}}  |  {{ secondCounter }}</p>
+		<p>Result is {{result()}}  |  {{output}}</p>
+
+
+		<p id="scope"></p>
+	</div>
+
+<script src="js/vue.js"></script>
+<script>
+	new Vue ({
+		el: '#app',
+		data: {
+			counter: 0,
+			secondCounter: 0,
+		},
+		computed: {
+			output(){
+				console.log('Output')
+				return this.counter < 5 ? 'less than five' : 'greater than five'
+			}
+		},
+		//watch is an alternative to computed
+		watch: {
+			counter(reset){
+				var vm = this;
+				setTimeout(function(){
+					vm.counter = 0;
+				}, 3000)
+			}
+		},
+		methods: {
+			result() {
+				console.log('Result')
+				return this.counter < 5 ? 'less than five' : 'greater than five'
+			}
+		}
+	});
+
+	var outside = 'Global Scope';
+
+	function firstLevel(){
+		var one = 'Level One Function';
+			console.log(one);
+			  function secondLevel() {
+				  var two = 'Level Two Function';
+				    console.log(two);
+			}
+			secondLevel();
+	}
+	firstLevel();
+	
+
+	
+	
+</script>
+
+</body>
+</html>
+
+
+
+
+<!-- <body>
+	Computed Properties 
+	<div id="app">
+		<button @click="increase">Increase</button>
+		<button @click="decrease">Decrease</button>
+		<button @click="secondCounter">Second Counter</button>
+
+		<p>Counter: {{counter}}</p>
+		<p>Result is {{result}}</p>
+
+	</div>
+
+<script src="js/vue.js"></script>
+<script>
+	new Vue ({
+		el: '#app',
+		data: {
+			counter: 0,
+			secondCounter: 0,
+			result: ''
+		},
+		methods:{
+			increase(){
+				this.counter++;
+				this.result = this.counter < 5 ? 'less than Five' : 'greater than Five'
+			},
+			decrease(){
+				this.counter--;
+				this.result = this.counter < 5 ? 'less than five' : 'greater than five'
+			}
+		}
+	});
+
+</script> -->

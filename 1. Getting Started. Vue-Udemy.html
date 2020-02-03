@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="">
+	<title>Lesson 1 - 9</title>
+</head>
+
+<body>
+	<!-- Lesson 1 -9. Data binding and all -->
+	<div id="app">
+		<h2>{{ text }}</h2>
+		 <!-- Two Way Data Binding -->
+		<input type="" name="" v-model="text">
+
+		<p>{{ supBro() }}</p>
+
+		<p>{{ accessText() }}</p>
+
+			<ul>
+				<li v-for="name in names">{{name}}</li>	
+			</ul>
+		<form action="#">
+			<input type="text" v-model="list">
+			<button @click="addList">Add Name</button>
+			<button @click="deleteList">Remove Name</button>
+		</form>
+	</div>
+
+	<script src="js/vue.js"></script>
+	<script>
+		new Vue ({
+			el: '#app',
+			data: {
+				text: 'Hello Vue!',
+				names: ['Bello', 'Yomi', 'Ben', 'Soji'],
+				list: ''
+			},
+			methods: {
+				supBro(){
+					return 'Hey Man';
+				},
+				accessText(){
+					return this.text = 'Hi Ebenezer';
+				},
+				addList(){
+					this.names.push(this.list);
+					this.list = '';
+				},
+				deleteList(){
+					this.names.pop(this.list);
+				}
+			}
+		})
+
+	</script>
+</body>
+</html>

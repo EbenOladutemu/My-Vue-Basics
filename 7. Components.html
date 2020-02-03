@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="">
+	<title>Lesson 1 - 14</title>
+</head>
+
+<body>
+	<!-- Using components -->
+  <div id="app">
+    <eben></eben>
+    <eben></eben><hr>
+		<!-- <eben>Yoooo</eben>
+		<eben>Hiiiiii</eben> -->
+	</div>
+	<div id="app2">
+    <eben2></eben2>
+    <eben2></eben2><hr>
+	</div>
+
+	<script src="js/vue.js"></script>
+	<script>
+
+		//Registering Components Locally. Globally would be Vue.component('name-of-component'{data object})
+		var cmp = {
+			data(){
+				return{
+					position: 'left'
+				}
+			},
+      template: '<p><slot>My position is currently {{ position }}</slot> <button @click="changePosition">Change</button></p>',
+      methods:{
+        changePosition(){
+          this.position = 'right';
+        }
+      }
+		};
+		new Vue({
+			el: '#app',
+			components: {
+				'eben': cmp
+			}
+		});
+		new Vue({
+			el: '#app2',
+			components:{
+				'eben2': cmp
+			}
+		})
+
+
+	</script>
+</body>
+</html>
